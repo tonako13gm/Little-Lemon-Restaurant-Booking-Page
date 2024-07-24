@@ -5,10 +5,11 @@ import Highlights from './components/Highlights';
 import Testimonials from './components/Testimonials';
 import About from './components/About';
 import Footer from './components/Footer';
+import theme from './brand';
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Container maxW='container.xl'>
         <Header/>
         <Hero/>
