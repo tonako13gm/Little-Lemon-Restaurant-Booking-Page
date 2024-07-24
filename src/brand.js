@@ -1,4 +1,6 @@
 import { extendTheme } from "@chakra-ui/react"
+import '@fontsource-variable/markazi-text';
+import '@fontsource-variable/karla';
 
 const theme = extendTheme({
     colors: {
@@ -9,6 +11,10 @@ const theme = extendTheme({
         dark: "#333333",
       },
     },
+    fonts: {
+        heading: `'Markazi Text Variable', sans-serif`,
+        body: `'karla', sans-serif`,
+      },
   })
 
   export default theme
