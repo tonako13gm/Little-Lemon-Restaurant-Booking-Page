@@ -14,7 +14,13 @@ const theme = extendTheme({
     fonts: {
         heading: `'Markazi Text Variable', sans-serif`,
         body: `'karla', sans-serif`,
-      },
+    },
+    fontSizes: {
+        xl: '4rem',
+        lg: '2.5rem',
+        md: '1.125rem',
+        sm: '1rem'
+    },
   })
 
   export default theme

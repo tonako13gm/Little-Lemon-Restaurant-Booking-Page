@@ -8,11 +8,11 @@ import { Routes, Route, Link } from "react-router-dom";
 function Header() {
     return (
         <Flex as='header' border='1px' borderColor='BlackAlpha.900' w='100%' p={4} color='BlackAlpha.900'>
-            <Box flex='2'></Box>
+            <Box flex='1'></Box>
             <Box flex='2'>
-                <Image src={logo} alt='Little Lemmon' />
+                <Image src={logo} alt='Little Lemmon'/>
             </Box>
-            <Box as='nav'flex='6' alignContent="center">
+            <Box as='nav'flex='8' alignContent="center">
                 <Flex direction="row" justifyContent="space-around">
                     <Link to="/">Home</Link>
                     <Link to="/">About</Link>
@@ -27,7 +27,7 @@ function Header() {
                     <Route path="/contact" element={<Contact />}></Route> */}
                 </Routes> 
             </Box>
-            <Box flex='2'></Box>
+            <Box flex='1'></Box>
         </Flex>
     )
   }
