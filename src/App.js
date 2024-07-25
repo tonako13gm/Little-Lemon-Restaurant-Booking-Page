@@ -10,7 +10,7 @@ import theme from './brand';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Container maxW='container.xl'>
+      <Container maxWidth='container.xl'>
         <Header/>
         <Hero/>
         <Highlights/>
