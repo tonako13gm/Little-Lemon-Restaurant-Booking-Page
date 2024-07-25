@@ -1,23 +1,23 @@
-import { Box, Flex, Heading, Button } from '@chakra-ui/react'
+import { Box, Flex, Heading, Button, HStack } from '@chakra-ui/react'
 import { Card, CardBody, Stack, Text, Image } from '@chakra-ui/react'
 import greekSalad from '../assets/Greek Salad.jpg'
 import { AspectRatio } from '@chakra-ui/react'
 
 function HighlighsHeading() {
     return (
-        <Flex as='section' border='1px' borderColor='BlackAlpha.900' w='100%' p={4} color='BlackAlpha.900'>
-            <Box flex='1' border='1px' borderColor='BlackAlpha.900'>1</Box>
-            <Box flex='10' border='1px' borderColor='BlackAlpha.900'>
+        <Flex as='section' w='100%' p={4}>
+            <Box flex='1'></Box>
+            <Box flex='10'>
                 <Flex>
-                    <Flex flex='6' border='1px' borderColor='BlackAlpha.900'>
+                    <Flex flex='6'>
                         <Heading fontSize='lg'>Specials</Heading>
                     </Flex>
-                    <Flex flex='6' border='1px' borderColor='BlackAlpha.900' justify='end'>
+                    <Flex flex='6' justify='end'>
                         <Button bg='brand.green'>Online Menu</Button>
                     </Flex>
                 </Flex>
             </Box>
-            <Box flex='1' border='1px' borderColor='BlackAlpha.900'>1</Box>
+            <Box flex='1'></Box>
         </Flex>
     )
   }
@@ -60,16 +60,12 @@ function HighlightsCardItems() {
 
 function HighlightsCard() {
     return (
-        <Flex as='section' border='1px' borderColor='BlackAlpha.900' w='100%' p={4} color='BlackAlpha.900'>
-            <Box flex='1' border='1px' borderColor='BlackAlpha.900'>1</Box>
-            <Flex flex='10' border='1px' borderColor='BlackAlpha.900'>
-                <Box flex='4' border='1px' borderColor='BlackAlpha.900'>
+        <Flex as='section' p={4} color='BlackAlpha.900'>
+            <Box flex='1'></Box>
+            <Flex flex='10'>
                     <HighlightsCardItems></HighlightsCardItems>
-                </Box>
-                <Box flex='4' border='1px' borderColor='BlackAlpha.900'>2</Box>
-                <Box flex='4' border='1px' borderColor='BlackAlpha.900'>3</Box>
             </Flex>
-            <Box flex='1' border='1px' borderColor='BlackAlpha.900'>1</Box>
+            <Box flex='1'></Box>
         </Flex>
     )
 }
@@ -78,7 +74,11 @@ function Highlights() {
     return (
         <Box>
             <HighlighsHeading></HighlighsHeading>
-            <HighlightsCard></HighlightsCard>
+            <HStack spacing={2}>
+                <HighlightsCard></HighlightsCard>
+                <HighlightsCard></HighlightsCard>
+                <HighlightsCard></HighlightsCard>
+            </HStack>
         </Box>
     )
 }
