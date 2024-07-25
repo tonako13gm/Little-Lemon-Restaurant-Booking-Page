@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Button } from '@chakra-ui/react'
-import { Card, CardBody, CardFooter, Stack, Text, Divider, ButtonGroup, Image } from '@chakra-ui/react'
-import hero from '../assets/hero.png'
+import { Card, CardBody, Stack, Text, Image } from '@chakra-ui/react'
+import greekSalad from '../assets/Greek Salad.jpg'
+import { AspectRatio } from '@chakra-ui/react'
 
 function HighlighsHeading() {
     return (
@@ -24,35 +25,35 @@ function HighlighsHeading() {
 function HighlightsCardItems() {
     return (
     <Card maxW='sm'>
-        <CardBody>
-            <Image
-            src={hero}
-            alt='Green double couch with wooden legs'
-            borderRadius='lg'
-            />
+        <CardBody p={2} m={5}>
+            <AspectRatio maxW='2xl' ratio={1}>
+                <Image
+                src={greekSalad}
+                objectFit='cover'
+                maxWidth='500px'
+                alt='greekSalad'
+                borderTopRadius='2xl'
+                />
+            </AspectRatio>
             <Stack mt='6' spacing='3'>
-            <Heading size='md'>Living room Sofa</Heading>
-            <Text>
+                <Flex align='center'>
+                    <Text flex='8' fontSize='md' fontWeight='bold' color='brand.daark'>
+                        Greek Salad
+                    </Text>
+                    <Text fontSize='md' fontWeight='bold' color='brand.red'>
+                        $450
+                    </Text>
+                </Flex>
+            <Text color='brand.daark'>
                 This sofa is perfect for modern tropical spaces, baroque inspired
                 spaces, earthy toned spaces and for people who love a chic design with a
                 sprinkle of vintage design.
             </Text>
-            <Text color='blue.600' fontSize='2xl'>
-                $450
+            <Text color='brand.daark' fontSize='sm' fontWeight='semibold'>
+                Order a delivery
             </Text>
             </Stack>
         </CardBody>
-        <Divider />
-        <CardFooter>
-            <ButtonGroup spacing='2'>
-            <Button variant='solid' colorScheme='blue'>
-                Buy now
-            </Button>
-            <Button variant='ghost' colorScheme='blue'>
-                Add to cart
-            </Button>
-            </ButtonGroup>
-        </CardFooter>
     </Card>
     )
 }

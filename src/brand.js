@@ -9,6 +9,7 @@ const theme = extendTheme({
         yellow: "#F4CE14",
         light: "#EDEFEE",
         dark: "#333333",
+        red: "#FE4D02"
       },
     },
     fonts: {
