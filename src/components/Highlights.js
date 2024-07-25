@@ -5,7 +5,7 @@ import { AspectRatio } from '@chakra-ui/react'
 
 function HighlighsHeading() {
     return (
-        <Flex as='section' w='100%' p={4}>
+        <Flex p={4}>
             <Box flex='1'></Box>
             <Box flex='10'>
                 <Flex>
@@ -24,8 +24,8 @@ function HighlighsHeading() {
 
 function HighlightsCardItems() {
     return (
-    <Card maxW='sm'>
-        <CardBody p={2} m={5}>
+    <Card maxW='sm' boxShadow='none'>
+        <CardBody p={1} m={5}>
             <AspectRatio maxW='2xl' ratio={1}>
                 <Image
                 src={greekSalad}
@@ -74,7 +74,7 @@ function Highlights() {
     return (
         <Box>
             <HighlighsHeading></HighlighsHeading>
-            <HStack spacing={2}>
+            <HStack>
                 <HighlightsCard></HighlightsCard>
                 <HighlightsCard></HighlightsCard>
                 <HighlightsCard></HighlightsCard>

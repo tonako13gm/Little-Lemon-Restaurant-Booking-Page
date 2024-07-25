@@ -7,7 +7,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 function Header() {
     return (
-        <Flex as='header' border='1px' borderColor='BlackAlpha.900' w='100%' p={4} color='BlackAlpha.900'>
+        <Flex as='header' color='brand.dark' my={5}>
             <Box flex='1'></Box>
             <Box flex='2'>
                 <Image src={logo} alt='Little Lemmon'/>
