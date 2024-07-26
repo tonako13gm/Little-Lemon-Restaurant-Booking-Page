@@ -4,7 +4,7 @@ import heroBG from '../assets/heroBG.jpg'
 
 function Hero() {
     return (
-        <Flex as='main' backgroundImage={heroBG} backgroundRepeat="no-repeat">
+        <Flex as='main' backgroundImage={heroBG} backgroundRepeat="no-repeat" mb={20}>
             <Box flex='1'></Box>
             <Box flex='4' px={5} mt={-5}>
                 <Image src={hero} alt='Main Dish'/>
