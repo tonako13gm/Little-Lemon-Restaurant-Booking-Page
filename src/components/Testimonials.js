@@ -27,7 +27,13 @@ function TestimonialsItem(props) {
                         </Center>
                     </Box>
                 </HStack>
-                <StarIcon/>
+                <Box>
+                    <StarIcon color='brand.yellow' mr={1}/>
+                    <StarIcon color='brand.yellow' mr={1}/>
+                    <StarIcon color='brand.yellow' mr={1}/>
+                    <StarIcon color='brand.yellow' mr={1}/>
+                    <StarIcon color='brand.yellow' mr={1}/>
+                </Box>
                 <Divider/>
                 <Box mt={5} pb={5}>
                     <Text noOfLines={4}>
