@@ -1,6 +1,6 @@
 import { Box, Flex, Image } from '@chakra-ui/react'
 import logo from '../assets/logo.jpg'
-import TestLink from "../components/TestLink"
+import TestLink from "../components/testLink"
 import { Routes, Route, Link } from "react-router-dom"
 
 
@@ -22,7 +22,7 @@ function Header() {
                     <Link to="/">Login</Link>
                 </Flex>
                 <Routes> 
-                    {/* <Route path="../components/TestLink" element={<TestLink />}></Route> */}
+                    <Route path="../components/TestLink" element={<TestLink />}></Route>
                     {/* <Route path="/about" element={<AboutLittleLemon />}></Route>
                     <Route path="/contact" element={<Contact />}></Route> */}
                 </Routes> 
