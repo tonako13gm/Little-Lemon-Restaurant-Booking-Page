@@ -7,6 +7,8 @@ import About from './components/About';
 import Footer from './components/Footer';
 import theme from './brand';
 
+
+
 function App() {
   return (
     <ChakraProvider theme={theme}>
