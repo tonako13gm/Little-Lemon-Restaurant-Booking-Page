@@ -1,50 +1,47 @@
-import { Box, HStack, VStack, Image, Text } from '@chakra-ui/react'
-import logo from '../assets/logo.jpg'
-import { Routes, Route, Link } from "react-router-dom"
-import TestLink from "../components/testLink"
+import { Box, HStack, VStack, Image, Text, Flex } from '@chakra-ui/react'
+import logoPlain from '../assets/logoPlain.png'
+import { Icon } from '@chakra-ui/react'
+import { AiFillFacebook, AiFillInstagram, AiFillTwitterCircle, AiOutlineYoutube } from "react-icons/ai";
+import NavLinks from './NavLinks'
 
 function Footer() {
     return (
-        <Box as='footer' bg='brand.green'>
-            <HStack>
-                <Box flex='2' ></Box>
-                <HStack flex='8'align='start'>
-                    <Box flex='3' >
-                    <VStack>
-                        <Box>
-                            <Image src={logo} alt='Dan Abramov' />
+        <Box as='footer' bg='brand.green' py='10'>
+            <HStack color='brand.light' fontSize='sm'>
+                <Box flex='1' ></Box>
+                <HStack flex='10'align='start' spacing='20'>
+                    <Box as='test' flex='4' >
+                    <VStack display='flex' border='1px' borderColor='red' >
+                        <Box border='1px' borderColor='red'>
+                            <Image src={logoPlain} alt='Little Lemon'/>
                         </Box>
-                        <Box >
+                        <Box>
                             <Text noOfLines='3'fontSize='sm'>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
                             </Text>
                         </Box>
                         <Box>
+                            <HStack fontSize='lg'>
+                                <Icon as={AiFillFacebook} />
+                                <Icon as={AiFillInstagram } />
+                                <Icon as={AiFillTwitterCircle} />
+                                <Icon as={AiOutlineYoutube} />
+                            </HStack>
                         </Box>
                     </VStack>
                     </Box>
-                    <Box flex='5' >
-                        <HStack justify='space-evenly'align='start'>
+                    <Box flex='6' >
+                        <HStack justify='space-evenly'align='start' spacing='20'>
                             <Box>
                                 <VStack>
-                                    <Text>NAVIGATION</Text>
-                                    <Link to="/">Home</Link>
-                                    <Link to="/">About</Link>
-                                    <Link to="/">Menu</Link>
-                                    <Link to="/">Reservations</Link>
-                                    <Link to="/">Order Online</Link>
-                                    <Link to="/">Login</Link>
-                                    <Routes> 
-                                        <Route path="../components/TestLink" element={<TestLink />}></Route>
-                                        {/* <Route path="/about" element={<AboutLittleLemon />}></Route>
-                                        <Route path="/contact" element={<Contact />}></Route> */}
-                                    </Routes> 
+                                    <Text fontWeight='bold'>NAVIGATION</Text>
+                                    <NavLinks/>
                                 </VStack>
                             </Box>
                             <Box>
                                 <VStack>
                                     <Box>
-                                        <Text>HOURS</Text>
+                                        <Text fontWeight='bold'>HOURS</Text>
                                     </Box>
                                     <Box>
                                         <Text>Monday - Friday</Text>
@@ -63,7 +60,7 @@ function Footer() {
                             <Box>
                                 <VStack>
                                     <Box>
-                                        <Text>ADDRESS</Text>
+                                        <Text fontWeight='bold'>ADDRESS</Text>
                                     </Box>
                                     <Box>
                                         <Text>Address here...</Text>
@@ -75,7 +72,7 @@ function Footer() {
                         </HStack>
                     </Box>
                 </HStack>
-                <Box flex='2' ></Box>
+                <Box flex='1' ></Box>
             </HStack>
         </Box>
     )
