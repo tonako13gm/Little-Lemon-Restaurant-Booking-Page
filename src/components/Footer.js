@@ -11,8 +11,8 @@ function Footer() {
                 <Box flex='1' ></Box>
                 <HStack flex='10'align='start' spacing='20'>
                     <Box as='test' flex='4' >
-                    <VStack display='flex' border='1px' borderColor='red' >
-                        <Box border='1px' borderColor='red'>
+                    <VStack display='flex'>
+                        <Box alignSelf='start'>
                             <Image src={logoPlain} alt='Little Lemon'/>
                         </Box>
                         <Box>
@@ -20,7 +20,7 @@ function Footer() {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
                             </Text>
                         </Box>
-                        <Box>
+                        <Box alignSelf='start'>
                             <HStack fontSize='lg'>
                                 <Icon as={AiFillFacebook} />
                                 <Icon as={AiFillInstagram } />
