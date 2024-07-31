@@ -1,27 +1,81 @@
 import { Box, HStack, VStack, Image, Text } from '@chakra-ui/react'
 import logo from '../assets/logo.jpg'
+import { Routes, Route, Link } from "react-router-dom"
+import TestLink from "../components/testLink"
 
 function Footer() {
     return (
-        <Box as='footer' border='1px' borderColor='BlackAlpha.900' w='100%' p={4} color='BlackAlpha.900'>
+        <Box as='footer' bg='brand.green'>
             <HStack>
-                <Box flex='2' border='1px' borderColor='BlackAlpha.900'></Box>
-                <Box flex='3' border='1px' borderColor='BlackAlpha.900'>
+                <Box flex='2' ></Box>
+                <HStack flex='8'align='start'>
+                    <Box flex='3' >
                     <VStack>
-                        <Box border='1px' borderColor='BlackAlpha.900'>
+                        <Box>
                             <Image src={logo} alt='Dan Abramov' />
                         </Box>
-                        <Box border='1px' borderColor='BlackAlpha.900'>
+                        <Box >
                             <Text noOfLines='3'fontSize='sm'>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
                             </Text>
                         </Box>
-                        <Box border='1px' borderColor='BlackAlpha.900'>
+                        <Box>
                         </Box>
                     </VStack>
-                </Box>
-                <Box flex='5' border='1px' borderColor='BlackAlpha.900'>5</Box>
-                <Box flex='2' border='1px' borderColor='BlackAlpha.900'>2</Box>
+                    </Box>
+                    <Box flex='5' >
+                        <HStack justify='space-evenly'align='start'>
+                            <Box>
+                                <VStack>
+                                    <Text>NAVIGATION</Text>
+                                    <Link to="/">Home</Link>
+                                    <Link to="/">About</Link>
+                                    <Link to="/">Menu</Link>
+                                    <Link to="/">Reservations</Link>
+                                    <Link to="/">Order Online</Link>
+                                    <Link to="/">Login</Link>
+                                    <Routes> 
+                                        <Route path="../components/TestLink" element={<TestLink />}></Route>
+                                        {/* <Route path="/about" element={<AboutLittleLemon />}></Route>
+                                        <Route path="/contact" element={<Contact />}></Route> */}
+                                    </Routes> 
+                                </VStack>
+                            </Box>
+                            <Box>
+                                <VStack>
+                                    <Box>
+                                        <Text>HOURS</Text>
+                                    </Box>
+                                    <Box>
+                                        <Text>Monday - Friday</Text>
+                                        <Text>8am - 10pm</Text>
+                                    </Box>
+                                    <Box>
+                                        <Text>Monday - Friday</Text>
+                                        <Text>8am - 10pm</Text>
+                                    </Box>
+                                    <Box>
+                                        <Text>Monday - Friday</Text>
+                                        <Text>8am - 10pm</Text>
+                                    </Box>
+                                </VStack>
+                            </Box>
+                            <Box>
+                                <VStack>
+                                    <Box>
+                                        <Text>ADDRESS</Text>
+                                    </Box>
+                                    <Box>
+                                        <Text>Address here...</Text>
+                                        <Text>Phone number</Text>
+                                        <Text>Email</Text>
+                                    </Box>
+                                </VStack>
+                            </Box>
+                        </HStack>
+                    </Box>
+                </HStack>
+                <Box flex='2' ></Box>
             </HStack>
         </Box>
     )
