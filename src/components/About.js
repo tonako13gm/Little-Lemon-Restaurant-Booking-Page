@@ -4,7 +4,7 @@ import chef2 from '../assets/chef2.jpg'
 
 function About() {
     return (
-        <Box as='main' bg='brand.light'>
+        <Box as='main' bg='brand.light' py={20}>
             <HStack>
                 <Box flex='1'></Box>
                 <Box flex='4'>
