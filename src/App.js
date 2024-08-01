@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials';
 import About from './components/About';
 import Footer from './components/Footer';
 import theme from './brand';
+import { Hide } from '@chakra-ui/react';
 
 
 
@@ -14,11 +15,13 @@ function App() {
     <ChakraProvider theme={theme}>
       <Container maxW='container.xl'>
         <Header/>
+<Hide breakpoint='(max-width: 767px)'>
         <Hero/>
         <Highlights/>
         <Testimonials/>
         <About/>
         <Footer/>
+</Hide>
       </Container>
     </ChakraProvider>
   )

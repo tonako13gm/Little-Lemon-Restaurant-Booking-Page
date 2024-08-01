@@ -32,7 +32,7 @@ function Footer() {
                     </Box>
                     <Box flex='6' >
                         <HStack justify='space-evenly'align='start' spacing='20'>
-                            <Box>
+                            <Box as='nav'>
                                 <VStack>
                                     <Text fontWeight='bold'>NAVIGATION</Text>
                                     <NavLinks/>
