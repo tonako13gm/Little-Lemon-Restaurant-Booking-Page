@@ -20,7 +20,8 @@ const theme = extendTheme({
         xl: '4rem',
         lg: '2.5rem',
         md: '1.125rem',
-        sm: '1rem'
+        sm: '1rem',
+        xs: '0.875rem'
     },
   })
 

@@ -15,8 +15,9 @@ function App() {
     <ChakraProvider theme={theme}>
       <Container maxW='container.xl'>
         <Header/>
-<Hide breakpoint='(max-width: 767px)'>
+
         <Hero/>
+<Hide breakpoint='(max-width: 767px)'>
         <Highlights/>
         <Testimonials/>
         <About/>
