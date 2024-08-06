@@ -14,7 +14,7 @@ function Header() {
             </Box>
             <Box flex={{ base: '2', md: '8'}} alignContent="center" marginLeft={100}>
                 <Hide breakpoint='(max-width: 767px)'>
-                    <Flex direction="row" justifyContent="space-around">
+                    <Flex as='nav' direction="row" justifyContent="space-around">
                         <NavLinks/>
                     </Flex>
                 </Hide>

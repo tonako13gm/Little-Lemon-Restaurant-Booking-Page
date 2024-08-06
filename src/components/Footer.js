@@ -1,4 +1,4 @@
-import { Box, HStack, VStack, Image, Text, Flex } from '@chakra-ui/react'
+import { Box, HStack, VStack, Image, Text } from '@chakra-ui/react'
 import logoPlain from '../assets/logoPlain.png'
 import { Icon } from '@chakra-ui/react'
 import { AiFillFacebook, AiFillInstagram, AiFillTwitterCircle, AiOutlineYoutube } from "react-icons/ai";
@@ -33,7 +33,7 @@ function Footer() {
                     <Box flex='6' >
                         <HStack justify='space-evenly'align='start' spacing='20'>
                             <Box>
-                                <VStack>
+                                <VStack as='nav'>
                                     <Text fontWeight='bold'>NAVIGATION</Text>
                                     <NavLinks/>
                                 </VStack>

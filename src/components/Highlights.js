@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Button, HStack, VStack } from '@chakra-ui/react'
+import { Box, Flex, Heading, Button, HStack } from '@chakra-ui/react'
 import { Card, CardBody, Stack, Text, Image } from '@chakra-ui/react'
 import greekSalad from '../assets/Greek Salad.jpg'
 import bruschetta from '../assets/Bruschetta.jpg'

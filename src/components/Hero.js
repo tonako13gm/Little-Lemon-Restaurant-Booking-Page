@@ -1,7 +1,7 @@
 import { Box, Flex, Text, Heading, Image, Button } from '@chakra-ui/react'
 import hero from '../assets/hero.png'
 import heroBG from '../assets/heroBG.jpg'
-import { Show, Hide } from '@chakra-ui/react'
+import { Hide } from '@chakra-ui/react'
 
 function Hero() {
     return (
