@@ -2,6 +2,7 @@ import { Box, Flex, Text, Heading, Image, Button } from '@chakra-ui/react'
 import hero from '../assets/hero.png'
 import heroBG from '../assets/heroBG.jpg'
 import { Hide } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 function Hero() {
     return (
@@ -19,7 +20,9 @@ function Hero() {
                 <Text color='brand.light' fontSize={{ base: 'xs', md: 'sm'}} >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
                 </Text>
-                <Button bg='brand.yellow' mt={{base:'5', md:'10'}} >Reserve a table</Button>
+                <Button bg='brand.yellow' mt={{base:'5', md:'10'}}>
+                    Reserve a table
+                </Button>
             </Box>
             <Box flex='1'></Box>
             <Box flex='1'></Box>

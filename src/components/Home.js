@@ -2,7 +2,7 @@ import React from "react"
 import Hero from "./Hero"
 import Highlights from "./Highlights"
 import Testimonials from "./Testimonials"
-import About from "./About"
+import AboutPage from "./About"
 
 function Home () {
     return (
@@ -10,7 +10,7 @@ function Home () {
             <Hero/>
             <Highlights/>
             <Testimonials/>
-            <About/>
+            <AboutPage/>
         </>
     )
 }

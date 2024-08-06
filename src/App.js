@@ -1,7 +1,7 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
-import TestLink from "./components/TestLink"
+import AboutPage from "./components/AboutPage"
 import Home from "./components/Home"
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
         },
         // other pages....
         {
-          path: "/try",
-          element: <TestLink />,
+          path: "/about",
+          element: <AboutPage />,
         },
       ],
     },
