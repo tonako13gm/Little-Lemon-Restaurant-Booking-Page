@@ -9,17 +9,17 @@ import OrderIcon from '../assets/order.svg'
 function HighlighsHeading() {
     return (
         <Flex p={4}>
-            <Box flex='1'></Box>
-            <Box flex='10'>
-                <Flex>
-                    <Flex flex='6'>
-                        <Heading fontSize='lg' color='brand.dark'>Specials</Heading>
-                    </Flex>
-                    <Flex flex='6' justify='end'>
-                        <Button bg='brand.green' color='brand.light'>Online Menu</Button>
-                    </Flex>
-                </Flex>
-            </Box>
+            <Box flex='1'></Box> 
+                <Box flex='10'>
+                    <Stack direction={{base:'column', md:'row'}}>
+                        <Flex flex='6' justify={{base:'center', sm:'start'}}>
+                            <Heading fontSize='lg' color='brand.dark'>Specials</Heading>
+                        </Flex>
+                        <Flex flex='6' justify={{base:'center', sm:'end'}}>
+                            <Button bg='brand.green' color='brand.light'>Online Menu</Button>
+                        </Flex>
+                    </Stack>
+                </Box>
             <Box flex='1'></Box>
         </Flex>
     )
@@ -28,7 +28,7 @@ function HighlighsHeading() {
 function HighlightsCardItems(props) {
     return (
     <Card maxW='sm' bg='brand.light'>
-        <CardBody p={1} m={12}>
+        <CardBody p={1} m={{ base:'5', md:'12'}}>
             <AspectRatio maxW='2xl' ratio={1}>
                 <Image
                 src={props.image}
@@ -66,32 +66,32 @@ function HighlightsCardItems(props) {
 
 function HighlightsCard() {
     return (
-        <HStack p={4} color='BlackAlpha.900' justify='space-evenly'>
-                    <HighlightsCardItems
-                        image={greekSalad}
-                        photoDesctiption='GreekSalad'
-                        menuName='Greek Salad'
-                        price='$12.95'
-                        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel metus et arcu eleifend tincidunt. Sed quis arcu consectetur, consequat velit at, sagittis mi.'
-                        >
-                    </HighlightsCardItems>
-                    <HighlightsCardItems
-                        image={bruschetta}
-                        photoDesctiption='Bruschetta'
-                        menuName='Bruschetta'
-                        price='$5.90'
-                        description='Duis dapibus mauris tortor, nec maximus ipsum maximus sit amet. Suspendisse elementum iaculis erat, ut molestie massa rutrum pellentesque.'
-                        >
-                    </HighlightsCardItems>
-                    <HighlightsCardItems
-                        image={lemonDessert}
-                        photoDesctiption='Lemon Dessert'
-                        menuName='Lemon Dessert'
-                        price='$5.00'
-                        description='Donec molestie ligula commodo sem tempor venenatis. Aenean ut ligula sit amet erat interdum scelerisque vitae nec ipsum.'
-                        >
-                    </HighlightsCardItems>
-        </HStack>
+        <Stack direction={{base:'column', md:'row' }} p={4} color='BlackAlpha.900' justify='space-evenly'>
+            <HighlightsCardItems
+                image={greekSalad}
+                photoDesctiption='GreekSalad'
+                menuName='Greek Salad'
+                price='$12.95'
+                description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel metus et arcu eleifend tincidunt. Sed quis arcu consectetur, consequat velit at, sagittis mi.'
+                >
+            </HighlightsCardItems>
+            <HighlightsCardItems
+                image={bruschetta}
+                photoDesctiption='Bruschetta'
+                menuName='Bruschetta'
+                price='$5.90'
+                description='Duis dapibus mauris tortor, nec maximus ipsum maximus sit amet. Suspendisse elementum iaculis erat, ut molestie massa rutrum pellentesque.'
+                >
+            </HighlightsCardItems>
+            <HighlightsCardItems
+                image={lemonDessert}
+                photoDesctiption='Lemon Dessert'
+                menuName='Lemon Dessert'
+                price='$5.00'
+                description='Donec molestie ligula commodo sem tempor venenatis. Aenean ut ligula sit amet erat interdum scelerisque vitae nec ipsum.'
+                >
+            </HighlightsCardItems>
+        </Stack>
     )
 }
 

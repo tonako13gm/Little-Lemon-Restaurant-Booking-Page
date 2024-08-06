@@ -12,7 +12,7 @@ function Header() {
             <Box flex={{ sm: '8', md: '2'}}>
                 <Image src={logo} alt='Little Lemmon'/>
             </Box>
-            <Box as='nav'flex={{ base: '2', md: '8'}} alignContent="center" marginLeft={100}>
+            <Box flex={{ base: '2', md: '8'}} alignContent="center" marginLeft={100}>
                 <Hide breakpoint='(max-width: 767px)'>
                     <Flex direction="row" justifyContent="space-around">
                         <NavLinks/>

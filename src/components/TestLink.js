@@ -1,4 +1,10 @@
+import { Container } from "@chakra-ui/react"
+
 function TestLink() {
-    return  <h1>This is a test link page</h1>
+    return  (
+        <Container maxW='container.2xl'>
+            THIS IS A TEST SPA 
+        </Container>
+    )
 }
 export default TestLink
