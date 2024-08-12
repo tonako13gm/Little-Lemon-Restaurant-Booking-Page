@@ -7,7 +7,7 @@ function NavLinks () {
             <Link to='/about' className="nav-item">About</Link>
             <Link to="/" className="nav-item">Menu</Link>
             <Link to="/" className="nav-item">Reservations</Link>
-            <Link to="/" className="nav-item">Order Online</Link>
+            <Link to="/booking" className="nav-item">Order Online</Link>
             <Link to="/" className="nav-item">Login</Link>
         </>
     )

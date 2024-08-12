@@ -17,6 +17,7 @@ const theme = extendTheme({
         body: `'karla', sans-serif`,
     },
     fontSizes: {
+        xxl: '6rem',
         xl: '4rem',
         lg: '2.5rem',
         md: '1.125rem',
