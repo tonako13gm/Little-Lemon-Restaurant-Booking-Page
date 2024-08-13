@@ -1,5 +1,5 @@
-import { Heading, Center, Flex, Box, VStack, Text, HStack } from "@chakra-ui/react";
-import React from "react";
+import { Heading, Center, Flex, Box, VStack, Text, HStack } from '@chakra-ui/react';
+import React from 'react';
 import heroBG from '../assets/heroBG.jpg'
 import lobby from '../assets/lobby.jpg'
 
@@ -31,7 +31,7 @@ function Booking () {
       <>
         <FormControl isInvalid={meta.touched && meta.error} >
           <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
-          <Field as={Select} className="text-input" {...field} {...props}/>
+          <Field as={Select} {...field} {...props}/>
           <FormErrorMessage>{meta.error}</FormErrorMessage>
         </FormControl>
       </>
@@ -45,7 +45,7 @@ function Booking () {
       <>
         <FormControl isInvalid={meta.touched && meta.error} >
           <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
-          <Field as={Textarea} className="text-input" {...field} {...props}/>
+          <Field as={Textarea} {...field} {...props}/>
           <FormErrorMessage>{meta.error}</FormErrorMessage>
         </FormControl>
       </>
@@ -60,7 +60,7 @@ function Booking () {
       <>
         <FormControl isInvalid={meta.touched && meta.error} >
           <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
-          <Field as={Input} className="text-input" {...field} {...props}/>
+          <Field as={Input} {...field} {...props}/>
           <FormErrorMessage>{meta.error}</FormErrorMessage>
         </FormControl>
 
@@ -148,8 +148,8 @@ function Booking () {
                                           phoneNumber: Yup.string()
                                             .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid')
                                             .required('Required')
-                                            .min(10, "too short")
-                                            .max(10, "too long")
+                                            .min(10, 'too short')
+                                            .max(10, 'too long')
                                             .required('Required'),
                                           date: Yup.date()
                                             .required('Required'),
@@ -160,7 +160,7 @@ function Booking () {
                                           time: Yup.string()
                                             .required('Required'),
                                           message: Yup.string()
-                                            .min(100, "Min of 100 characters")
+                                            .min(100, 'Min of 100 characters')
                                             .required('Required'),
                                           jobType: Yup.string()
                                             .oneOf(
@@ -182,29 +182,29 @@ function Booking () {
                                             <Box pb='10'>
 
                                             <MyTextInput
-                                              label="First Name"
-                                              name="firstName"
-                                              type="text"
-                                              placeholder="TEST"
+                                              label='First Name'
+                                              name='firstName'
+                                              type='text'
+                                              placeholder='TEST'
                                             />
 
                                             </Box>
                                         
                                             <Box pb='10'>
                                               <MyEmailInput
-                                                label="Email"
-                                                name="email"
-                                                type="email"
-                                                placeholder="TEST"
+                                                label='Email'
+                                                name='email'
+                                                type='email'
+                                                placeholder='TEST'
                                               />
                                             </Box>
                                     
                                             <Box pb='10'>
                                               <MyTextInput
-                                                label="Phone number"
-                                                name="phoneNumber"
-                                                type="number"
-                                                placeholder="TEST"
+                                                label='Phone number'
+                                                name='phoneNumber'
+                                                type='number'
+                                                placeholder='TEST'
                                               />
                                             </Box>
 
@@ -212,15 +212,15 @@ function Booking () {
                                                 <HStack>
                                                     <Box flex='6' pb='10'>
                                                       <MyTextInput
-                                                        label="Date of reservation"
-                                                        name="date"
-                                                        type="date"
+                                                        label='Date of reservation'
+                                                        name='date'
+                                                        type='date'
                                                       />
                                                     </Box>
                                                     <Box flex='6' pb='10'>
                                                       <MySelect
-                                                        label="Time of reservation"
-                                                        name="time"
+                                                        label='Time of reservation'
+                                                        name='time'
                                                         placeholder=' '
                                                       >
                                                         <option value='17:00'>17:00</option>
@@ -237,8 +237,8 @@ function Booking () {
                                                 <HStack>
                                                     <Box flex='6' pb='10'>
                                                       <MySelect
-                                                        label="Number of guest"
-                                                        name="numberOfGuest"
+                                                        label='Number of guest'
+                                                        name='numberOfGuest'
                                                         placeholder=' '
                                                       >
                                                         <option value='1-5 person/s'>1-5 person/s</option>
@@ -249,8 +249,8 @@ function Booking () {
                                                     </Box>
                                                     <Box flex='6' pb='10'>
                                                       <MySelect
-                                                          label="Occassion"
-                                                          name="occassion"
+                                                          label='Occassion'
+                                                          name='occassion'
                                                           placeholder=' '
                                                         >
                                                           <option value='Birthday'>Birthday</option>
@@ -263,9 +263,9 @@ function Booking () {
 
                                             <Box>
                                               <MyTextArea
-                                                label="Your Message"
-                                                name="message"
-                                                placeholder="mensahe"
+                                                label='Your Message'
+                                                name='message'
+                                                placeholder='mensahe'
                                               />
                                             </Box>
 
