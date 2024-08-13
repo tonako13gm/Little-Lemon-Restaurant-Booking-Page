@@ -13,22 +13,85 @@ import {
     NumberInputField,
     Textarea,
     Button,
+    Select,
   } from '@chakra-ui/react'
 
-import { Form, Formik, Field } from "formik";
+import { Formik, Form, useField, Field } from 'formik';
+import * as Yup from 'yup';
+import { date } from 'yup';
 
 function Booking () {
 
-    // Validation -----------------------------------------
-    function validateName(value) {
-        let error
-        if (!value) {
-          error = 'Name is required'
-        } else if (value.toLowerCase() !== 'naruto') {
-          error = "Jeez! You're not a fan 😱"
-        }
-        return error
-      }
+  // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/ ;
+
+  const MySelect = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+
+    return (
+      <>
+        <FormControl isInvalid={meta.touched && meta.error} >
+          <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
+          <Field as={Select} className="text-input" {...field} {...props}/>
+          <FormErrorMessage>{meta.error}</FormErrorMessage>
+        </FormControl>
+      </>
+    );
+  };
+
+  const MyTextArea = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+
+    return (
+      <>
+        <FormControl isInvalid={meta.touched && meta.error} >
+          <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
+          <Field as={Textarea} className="text-input" {...field} {...props}/>
+          <FormErrorMessage>{meta.error}</FormErrorMessage>
+        </FormControl>
+      </>
+    );
+  };
+
+  const MyTextInput = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+    
+    
+    return (
+      <>
+        <FormControl isInvalid={meta.touched && meta.error} >
+          <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
+          <Field as={Input} className="text-input" {...field} {...props}/>
+          <FormErrorMessage>{meta.error}</FormErrorMessage>
+        </FormControl>
+
+      </>
+    );
+  };
+
+  const MyEmailInput = ({ label, ...props }) => {
+    const [field, meta] = useField(props);
+
+    // function validateEmail(value) {
+    //   let error;
+    //   if (!value) {
+    //     error = 'Required TEST';
+    //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    //     error = 'Invalid email address';
+    //   }
+    //   return error;
+    // }
+
+    return (
+      <>
+        <FormControl isInvalid={meta.touched && meta.error} >
+          <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
+          {/* <Field as={Input} {...field} {...props} validate={validateEmail}/> */}
+          <Field as={Input} {...field} {...props}/>
+          <FormErrorMessage>{meta.error}</FormErrorMessage>
+        </FormControl>
+      </>
+    );
+  };
 
     return (
         <>
@@ -70,7 +133,42 @@ function Booking () {
                             <Center>
                                 <VStack>
                                     <Formik
-                                        initialValues={{ name: 'Sasuke' }}
+                                        initialValues={{ firstName: '' }}
+                                        validationSchema={Yup.object({
+                                          firstName: Yup.string()
+                                            .max(15, 'Must be 15 characters or less')
+                                            .required('Required'),
+                                          lastName: Yup.string()
+                                            .max(20, 'Must be 20 characters or less')
+                                            .required('Required'),
+                                          email: Yup.string()
+                                            // .email('Invalid email address')
+                                            .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Invalid email address')
+                                            .required('Required'),
+                                          phoneNumber: Yup.string()
+                                            .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid')
+                                            .required('Required')
+                                            .min(10, "too short")
+                                            .max(10, "too long")
+                                            .required('Required'),
+                                          date: Yup.date()
+                                            .required('Required'),
+                                          numberOfGuest: Yup.string()
+                                            .required('Required'),
+                                          occassion: Yup.string()
+                                            .required('Required'),
+                                          time: Yup.string()
+                                            .required('Required'),
+                                          message: Yup.string()
+                                            .min(100, "Min of 100 characters")
+                                            .required('Required'),
+                                          jobType: Yup.string()
+                                            .oneOf(
+                                              ['designer', 'development', 'product', 'other'],
+                                              'Invalid Job Type'
+                                            )
+                                            .required('Required'),
+                                        })}
                                         onSubmit={(values, actions) => {
                                         setTimeout(() => {
                                             alert(JSON.stringify(values, null, 2))
@@ -83,75 +181,92 @@ function Booking () {
                                             <>
                                             <Box pb='10'>
 
-                                            <Field name='name' validate={validateName}>
-                                                {({ field, form }) => (
-
-                                                    <FormControl isInvalid={form.errors.name && form.touched.name}>
-                                                        <FormLabel>Full name</FormLabel>
-                                                        <Input {...field} placeholder='name' />
-                                                        <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                                                    </FormControl>
-
-                                                )}
-                                                </Field>
+                                            <MyTextInput
+                                              label="First Name"
+                                              name="firstName"
+                                              type="text"
+                                              placeholder="TEST"
+                                            />
 
                                             </Box>
                                         
                                             <Box pb='10'>
-                                                <FormControl>
-                                                    <FormLabel>Email address</FormLabel>
-                                                    <Input type='email' />
-                                                    <FormHelperText>We'll never share your email.</FormHelperText>
-                                                </FormControl>
+                                              <MyEmailInput
+                                                label="Email"
+                                                name="email"
+                                                type="email"
+                                                placeholder="TEST"
+                                              />
                                             </Box>
                                     
                                             <Box pb='10'>
-                                                <FormControl>
-                                                    <FormLabel>Phone Number</FormLabel>
-                                                    <NumberInput max={50} min={10}>
-                                                        <NumberInputField />
-                                                    </NumberInput>
-                                                </FormControl>
+                                              <MyTextInput
+                                                label="Phone number"
+                                                name="phoneNumber"
+                                                type="number"
+                                                placeholder="TEST"
+                                              />
                                             </Box>
 
                                             <Box>
                                                 <HStack>
                                                     <Box flex='6' pb='10'>
-                                                        <FormControl>
-                                                            <FormLabel>Date of your reservation</FormLabel>
-                                                            <Input type='text' />
-                                                        </FormControl>
+                                                      <MyTextInput
+                                                        label="Date of reservation"
+                                                        name="date"
+                                                        type="date"
+                                                      />
                                                     </Box>
                                                     <Box flex='6' pb='10'>
-                                                        <FormControl>
-                                                            <FormLabel>Choose the time of reservation</FormLabel>
-                                                            <Input type='text' />
-                                                        </FormControl>
+                                                      <MySelect
+                                                        label="Time of reservation"
+                                                        name="time"
+                                                        placeholder=' '
+                                                      >
+                                                        <option value='17:00'>17:00</option>
+                                                        <option value='18:00'>18:00</option>
+                                                        <option value='19:00'>19:00</option>
+                                                        <option value='20:00'>20:00</option>
+                                                        <option value='21:00'>21:00</option>
+                                                        <option value='22:00'>22:00</option>
+                                                      </MySelect>
                                                     </Box>
                                                 </HStack>
                                             </Box>
                                             <Box>
                                                 <HStack>
                                                     <Box flex='6' pb='10'>
-                                                        <FormControl>
-                                                            <FormLabel>Number of guest</FormLabel>
-                                                            <Input type='text' />
-                                                        </FormControl>
+                                                      <MySelect
+                                                        label="Number of guest"
+                                                        name="numberOfGuest"
+                                                        placeholder=' '
+                                                      >
+                                                        <option value='1-5 person/s'>1-5 person/s</option>
+                                                        <option value='5-10 persons'>5-10 persons</option>
+                                                        <option value='11-20 persons'>11-20 persons</option>
+                                                        <option value='21-50 persons'>21-50 persons</option>
+                                                        </MySelect>
                                                     </Box>
                                                     <Box flex='6' pb='10'>
-                                                        <FormControl>
-                                                            <FormLabel>Occassion</FormLabel>
-                                                            <Input type='text' />
-                                                        </FormControl>
+                                                      <MySelect
+                                                          label="Occassion"
+                                                          name="occassion"
+                                                          placeholder=' '
+                                                        >
+                                                          <option value='Birthday'>Birthday</option>
+                                                          <option value='Wedding'>Wedding</option>
+                                                          <option value='Anniversary'>Anniversary</option>
+                                                        </MySelect>
                                                     </Box>
                                                 </HStack>
                                             </Box>
 
                                             <Box>
-                                                <FormControl>
-                                                    <FormLabel>Your Message</FormLabel>
-                                                    <Textarea placeholder='' />
-                                                </FormControl>
+                                              <MyTextArea
+                                                label="Your Message"
+                                                name="message"
+                                                placeholder="mensahe"
+                                              />
                                             </Box>
 
                                             <Box>
@@ -179,5 +294,7 @@ function Booking () {
        
     )
 }
+
+// console.log(firstName);
 
 export default Booking
