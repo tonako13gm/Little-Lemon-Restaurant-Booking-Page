@@ -7,10 +7,7 @@ import {
     FormControl,
     FormLabel,
     FormErrorMessage,
-    FormHelperText,
     Input,
-    NumberInput,
-    NumberInputField,
     Textarea,
     Button,
     Select,
@@ -18,7 +15,6 @@ import {
 
 import { Formik, Form, useField, Field } from 'formik';
 import * as Yup from 'yup';
-import { date } from 'yup';
 
 function Booking () {
 
@@ -54,7 +50,6 @@ function Booking () {
 
   const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
-    
     
     return (
       <>
@@ -133,13 +128,19 @@ function Booking () {
                             <Center>
                                 <VStack>
                                     <Formik
-                                        initialValues={{ firstName: '' }}
+                                        initialValues={{
+                                          fullName: '',
+                                          email: '',
+                                          phoneNumber: '',
+                                          date: '',
+                                          numberOfGuest: '',
+                                          occassion: '',
+                                          time: '',
+                                          message: '',
+                                        }}
                                         validationSchema={Yup.object({
-                                          firstName: Yup.string()
+                                          fullName: Yup.string()
                                             .max(15, 'Must be 15 characters or less')
-                                            .required('Required'),
-                                          lastName: Yup.string()
-                                            .max(20, 'Must be 20 characters or less')
                                             .required('Required'),
                                           email: Yup.string()
                                             // .email('Invalid email address')
@@ -162,18 +163,12 @@ function Booking () {
                                           message: Yup.string()
                                             .min(100, 'Min of 100 characters')
                                             .required('Required'),
-                                          jobType: Yup.string()
-                                            .oneOf(
-                                              ['designer', 'development', 'product', 'other'],
-                                              'Invalid Job Type'
-                                            )
-                                            .required('Required'),
                                         })}
-                                        onSubmit={(values, actions) => {
-                                        setTimeout(() => {
-                                            alert(JSON.stringify(values, null, 2))
-                                            actions.setSubmitting(false)
-                                        }, 1000)
+                                        onSubmit={(values, { setSubmitting }) => {
+                                          setTimeout(() => {
+                                            alert(JSON.stringify(values, null, 2));
+                                            setSubmitting(false);
+                                          }, 400);
                                         }}
                                     >
                                         <Form>
@@ -182,8 +177,8 @@ function Booking () {
                                             <Box pb='10'>
 
                                             <MyTextInput
-                                              label='First Name'
-                                              name='firstName'
+                                              label='Full Name'
+                                              name='fullName'
                                               type='text'
                                               placeholder='TEST'
                                             />
@@ -295,6 +290,6 @@ function Booking () {
     )
 }
 
-// console.log(firstName);
+// console.log();
 
 export default Booking
