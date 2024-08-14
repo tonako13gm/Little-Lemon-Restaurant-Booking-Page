@@ -29,9 +29,27 @@ import * as Yup from 'yup';
 
 function Booking () {
 
+  const timeSlotsList = [
+    {time: '17:00'},
+    {time: '18:00'},
+    {time: '19:00'},
+    {time: '20:00'},
+    {time: '21:00'},
+    {time: '22:00'}
+  ]
+
+  const AvailableTimes = (props) => {
+    const timeSlots = props.data.map(time =>
+      <option value={time.time}>{time.time}</option>
+    )
+    return (
+      <>{timeSlots}</>
+    )
+  }
+
   const MyInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
-    
+
     return (
       <>
         <FormControl isInvalid={meta.touched && meta.error} >
@@ -174,12 +192,7 @@ function Booking () {
                                               name='time'
                                               placeholder=' '
                                             >
-                                              <option value='17:00'>17:00</option>
-                                              <option value='18:00'>18:00</option>
-                                              <option value='19:00'>19:00</option>
-                                              <option value='20:00'>20:00</option>
-                                              <option value='21:00'>21:00</option>
-                                              <option value='22:00'>22:00</option>
+                                              <AvailableTimes data={timeSlotsList} />
                                             </MyInput>
                                           </Box>
                                       </HStack>
