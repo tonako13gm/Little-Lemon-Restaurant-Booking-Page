@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState} from 'react'
 import heroBG from '../assets/heroBG.jpg'
 import lobby from '../assets/lobby.jpg'
 import {
@@ -29,14 +29,22 @@ import * as Yup from 'yup';
 
 function Booking () {
 
-  const timeSlotsList = [
+  const [timeSlotsList, setTimeSlotsList] = useState ([
     {time: '17:00'},
     {time: '18:00'},
     {time: '19:00'},
     {time: '20:00'},
     {time: '21:00'},
     {time: '22:00'}
-  ]
+  ])
+
+  function updateTime (valueTime) {
+    return (
+      setTimeSlotsList(
+        timeSlotsList.filter(a => a.time !== valueTime)
+      )
+    )
+  }
 
   const AvailableTimes = (props) => {
     const timeSlots = props.data.map(time =>
@@ -46,6 +54,8 @@ function Booking () {
       <>{timeSlots}</>
     )
   }
+
+
 
   const MyInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
@@ -112,10 +122,9 @@ function Booking () {
                               }}
                               validationSchema={Yup.object({
                                 fullName: Yup.string()
-                                  .max(15, 'Must be 15 characters or less')
+                                  .max(30, 'Must be 15 characters or less')
                                   .required('Required'),
                                 email: Yup.string()
-                                  // .email('Invalid email address')
                                   .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Invalid email address')
                                   .required('Required'),
                                 phoneNumber: Yup.string()
@@ -133,15 +142,16 @@ function Booking () {
                                 time: Yup.string()
                                   .required('Required'),
                                 message: Yup.string()
-                                  .min(100, 'Min of 100 characters')
+                                  .min(10, 'Min of 100 characters')
                                   .required('Required'),
                               })}
-                              onSubmit={(values, { setSubmitting }) => {
+                              onSubmit={(values, {setSubmitting, resetForm}) => {
                                 setTimeout(() => {
                                   alert(JSON.stringify(values, null, 2));
                                   setSubmitting(false);
-                                  // console.log(values);
-                                }, 400);
+                                  resetForm();
+                                  updateTime(values.time)
+                                }, 100);
                               }}
                             >
                               <Form>
@@ -238,7 +248,6 @@ function Booking () {
                                       <Button
                                           mt={4}
                                           colorScheme='teal'
-                                          // isLoading={props.isSubmitting}
                                           type='submit'
                                       >
                                           Submit
