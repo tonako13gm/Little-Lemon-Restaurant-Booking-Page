@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect, memo, useMemo } from 'react'
 import heroBG from '../assets/heroBG.jpg'
 import lobby from '../assets/lobby.jpg'
 import {
@@ -20,42 +20,144 @@ import {
   Select,
 } from '@chakra-ui/react'
 import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
+} from '@chakra-ui/react'
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  AlertDialogCloseButton,
+} from '@chakra-ui/react'
+import {
   Formik,
   Form,
   useField,
-  Field
+  Field,
+  useFormikContext,
+  useFormik,
+  withFormik
 } from 'formik';
 import * as Yup from 'yup';
 
+
 function Booking () {
+  const [timeSlotsList, setTimeSlotsList] = useState ([])
 
-  const [timeSlotsList, setTimeSlotsList] = useState ([
-    {time: '17:00'},
-    {time: '18:00'},
-    {time: '19:00'},
-    {time: '20:00'},
-    {time: '21:00'},
-    {time: '22:00'}
-  ])
+  const submitAPI = function(formData) {
+    return true
+  };
 
-  function updateTime (valueTime) {
-    return (
-      setTimeSlotsList(
-        timeSlotsList.filter(a => a.time !== valueTime)
-      )
-    )
+  const [dateSelected, setDateSelected] = useState()
+
+  useEffect(() => {
+    const day = new Date(dateSelected)
+    setTimeSlotsList(fetchAPI(day))
+
+  }, [dateSelected]);
+  
+  const FormValues = () => {
+    const { values } = useFormikContext();
+    setDateSelected(values.date)
   }
 
   const AvailableTimes = (props) => {
     const timeSlots = props.data.map(time =>
-      <option value={time.time}>{time.time}</option>
+      <option value={time}>{time}</option>
     )
     return (
       <>{timeSlots}</>
     )
   }
 
+  function updateTime (valueTime) {
+    return (
+      setTimeSlotsList(
+        timeSlotsList.filter(a => a !== valueTime)
+      )
+    )
+  }
 
+  const seededRandom = function (seed) {
+    var m = 2**35 - 31;
+    var a = 185852;
+    var s = seed % m;
+    return function () {
+        return (s = s * a % m) / m;
+    };
+  }
+  
+  const fetchAPI = function(date) {
+    let result = [];
+    let random = seededRandom(date.getDate());
+  
+    for(let i = 17; i <= 23; i++) {
+        if(random() < 0.5) {
+            result.push(i + ':00');
+        }
+        if(random() < 0.5) {
+            result.push(i + ':30');
+        }
+    }
+    return result;
+  };
+
+
+
+  const [modalSwitch, setModalSwitch] =  useState(false)
+  console.log(modalSwitch)
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+
+    function AlertDialogExample() {
+      
+      // const cancelRef = React.useRef()
+    
+      return (
+        <>
+    
+          <AlertDialog
+            isOpen={isOpen}
+            // leastDestructiveRef={cancelRef}
+            onClose={onClose}
+          >
+            <AlertDialogOverlay>
+              <AlertDialogContent>
+                <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                  Delete Customer
+                </AlertDialogHeader>
+    
+                <AlertDialogBody>
+                  Are you sure? You can't undo this action afterwards.
+                </AlertDialogBody>
+    
+                <AlertDialogFooter>
+                  {/* <Button ref={cancelRef} onClick={onClose}> */}
+                  <Button onClick={onClose}>
+                    Cancel
+                  </Button>
+                  <Button colorScheme='red' onClick={onClose} ml={3}>
+                    Delete
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialogOverlay>
+          </AlertDialog>
+        </>
+      )
+    }
+
+  
 
   const MyInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
@@ -84,7 +186,6 @@ function Booking () {
                   </Box>
               <Box flex='1'></Box>
           </Flex>
-
           <Flex bgImage={lobby} bgRepeat='no-repeat' bgSize='cover'>
               <Box flex='1'></Box>
                   <Box flex='10'>
@@ -133,24 +234,25 @@ function Booking () {
                                   .min(10, 'too short')
                                   .max(10, 'too long')
                                   .required('Required'),
-                                date: Yup.date()
-                                  .required('Required'),
-                                numberOfGuest: Yup.string()
-                                  .required('Required'),
-                                occassion: Yup.string()
-                                  .required('Required'),
-                                time: Yup.string()
-                                  .required('Required'),
+                                date: Yup.date(),
+                                  // .required('Required'),
+                                numberOfGuest: Yup.string(),
+                                  // .required('Required'),
+                                occassion: Yup.string(),
+                                  // .required('Required'),
+                                time: Yup.string(),
+                                  // .required('Required'),
                                 message: Yup.string()
-                                  .min(10, 'Min of 100 characters')
-                                  .required('Required'),
+                                  .min(100, 'Min of 100 characters')
+                                  // .required('Required'),
                               })}
                               onSubmit={(values, {setSubmitting, resetForm}) => {
                                 setTimeout(() => {
-                                  alert(JSON.stringify(values, null, 2));
+                                  alert(JSON.stringify(values, null, 2))
                                   setSubmitting(false);
+                                  submitAPI(values)
                                   resetForm();
-                                  updateTime(values.time)
+                                  // updateTime(values.time)
                                 }, 100);
                               }}
                             >
@@ -194,6 +296,7 @@ function Booking () {
                                               name='date'
                                               type='date'
                                             />
+                                                <FormValues />
                                           </Box>
                                           <Box flex='6' pb='10'>
                                             <MyInput
@@ -249,9 +352,20 @@ function Booking () {
                                           mt={4}
                                           colorScheme='teal'
                                           type='submit'
+                                          // onClick={onOpen}
+                                          disabled={Formik.isSubmitting}
                                       >
                                           Submit
                                       </Button>
+                                      <Button
+                                          mt={4}
+                                          colorScheme='teal'
+                                          type='reset'
+                                      >
+                                          Reset
+                                      </Button>
+
+              <AlertDialogExample/>
                                   </Box>
                                 </>
                               </Form>
@@ -265,5 +379,7 @@ function Booking () {
         </>
     )
 }
+
+
 
 export default Booking
