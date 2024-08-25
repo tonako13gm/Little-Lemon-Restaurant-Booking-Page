@@ -3,13 +3,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
 import AboutPage from "./components/AboutPage"
 import Home from "./components/Home"
-import Booking from "./components/ReservationPage"
+import Booking from "./components/FormikaAndYup"
+import { AlertProvider } from "./components/contex/alertContex"
+import Alert from './components/contex/Alert';
 
 function App() {
   const router = createBrowserRouter([
     {
       // parent route component
-      element: <Layout />,
+      element: 
+        <Layout />,
       // child route components
       children: [
         {
@@ -24,7 +27,7 @@ function App() {
         {
           path: "/booking",
           element: <Booking />,
-        },
+        }
       ],
     },
   ])
