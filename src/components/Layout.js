@@ -3,7 +3,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import { ChakraProvider } from "@chakra-ui/react"
 import { Container } from "@chakra-ui/react"
-import theme from "../brand"
+import theme from "./theme/brand"
 
 export default function Layout() {
     return (

@@ -18,6 +18,7 @@ import {
   Textarea,
   Button,
   Select,
+  Link
 } from '@chakra-ui/react'
 import {
   Formik,
@@ -30,8 +31,8 @@ import * as Yup from 'yup';
 
 import useSubmit from "./hooks/useSubmit";
 import timeGenerator from "./api/timeGenerator";
-import {useAlertContext} from '../components/contex/alertContex'
-import Alert from './contex/Alert';
+import {useAlertContext} from './contex/alertContex'
+import Alert from './Alert';
 
 function Booking () {
   const [timeSlotsList, setTimeSlotsList] = useState ([])
@@ -110,17 +111,17 @@ function Booking () {
           </Flex>
           <Flex bgImage={lobby} bgRepeat='no-repeat' bgSize='cover'>
               <Box flex='1'></Box>
-                  <Box flex='10'>
-                      <Box flex='12' bgColor='brand.green' color='brand.light' py={10}>
+                  <Box flex='10' py='20'>
+                      <Box bgColor='brand.green' color='brand.light' py='10' borderTopRadius='lg'>
                           <Center>
                               <VStack>
                                   <Box >
                                       <Center>
                                           <VStack>
-                                              <Text>
+                                              <Text py='2'>
                                                   This form allows you to reserve a table at our restaurant for your upcoming dining experience.
                                               </Text>
-                                              <Text>
+                                              <Text py='2'>
                                                   Please fill out the following details to secure your reservation.
                                               </Text>
                                           </VStack>
@@ -129,9 +130,10 @@ function Booking () {
                               </VStack>
                           </Center>
                       </Box>
-                      <Box flex='12' bgColor='pink' color='brand.dark' py={10}>
-                        <Center>
-                          <VStack>
+                      <Box bgColor='brand.light' color='brand.dark' py='10' borderBottomRadius='lg'>
+                        <Box mx='48'>
+                        {/* <Center> */}
+                          {/* <VStack> */}
                             <Formik
                               initialValues={{
                                 fullName: '',
@@ -145,17 +147,16 @@ function Booking () {
                               }}
                               validationSchema={Yup.object({
                                 fullName: Yup.string()
-                                  .max(30, 'Must be 15 characters or less')
-                                  .required('Required'),
+                                  .max(30, 'Must be 15 characters or less'),
+                                  // .required('Required'),
                                 email: Yup.string()
-                                  .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Invalid email address')
-                                  .required('Required'),
+                                  .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Invalid email address'),
+                                  // .required('Required'),
                                 phoneNumber: Yup.string()
                                   .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid')
-                                  .required('Required')
                                   .min(10, 'too short')
-                                  .max(10, 'too long')
-                                  .required('Required'),
+                                  .max(10, 'too long'),
+                                  // .required('Required'),
                                 date: Yup.date(),
                                   // .required('Required'),
                                 numberOfGuest: Yup.string(),
@@ -271,28 +272,32 @@ function Booking () {
                                   </Box>
                                   <Box>
                                       <Button
-                                          mt={4}
-                                          colorScheme='teal'
-                                          type='submit'
-                                          isLoading={isLoading}
+                                        isLoading={isLoading}
+                                        width='100%'
+                                        variant='brandPrimary'
+                                        mt={4}
+                                        colorScheme='teal'
+                                        type='submit'
                                       >
                                           Submit
                                       </Button>
-                                      <Button
+                                      {/* <Button
+                                          variant='brandPrimary'
                                           mt={4}
                                           colorScheme='teal'
                                           type='reset'
                                       >
                                           Reset
-                                      </Button>
+                                      </Button> */}
                                   </Box>
                                   {/* retrieve values from formik */}
                                   <FormValues />
                                 </>
                               </Form>
                             </Formik>
-                          </VStack>
-                        </Center>
+                          {/* </VStack> */}
+                        {/* </Center> */}
+                        </Box>
                       </Box>
                   </Box>
               <Box flex='1'></Box>

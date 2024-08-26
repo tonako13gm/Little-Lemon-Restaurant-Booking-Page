@@ -16,7 +16,7 @@ function HighlighsHeading() {
                             <Heading fontSize='lg' color='brand.dark'>Specials</Heading>
                         </Flex>
                         <Flex flex='6' justify={{base:'center', sm:'end'}}>
-                            <Button bg='brand.green' color='brand.light'>Online Menu</Button>
+                            <Button bg='brand.green' color='brand.light' variant='brandPrimary'>Online Menu</Button>
                         </Flex>
                     </Stack>
                 </Box>

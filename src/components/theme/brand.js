@@ -1,6 +1,8 @@
 import { extendTheme } from "@chakra-ui/react"
 import '@fontsource-variable/markazi-text';
 import '@fontsource-variable/karla';
+import { modalTheme } from './modal'
+import { buttonTheme } from './button'
 
 const theme = extendTheme({
     colors: {
@@ -24,6 +26,8 @@ const theme = extendTheme({
         sm: '1rem',
         xs: '0.875rem'
     },
+    components: { Modal: modalTheme },
+    components: { Button: buttonTheme },
   })
 
-  export default theme
+export default theme

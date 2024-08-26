@@ -4,8 +4,6 @@ import Layout from "./components/Layout"
 import AboutPage from "./components/AboutPage"
 import Home from "./components/Home"
 import Booking from "./components/FormikaAndYup"
-import { AlertProvider } from "./components/contex/alertContex"
-import Alert from './components/contex/Alert';
 
 function App() {
   const router = createBrowserRouter([
@@ -19,7 +17,6 @@ function App() {
           path: "/",
           element: <Home />,
         },
-        // other pages....
         {
           path: "/about",
           element: <AboutPage />,
@@ -27,7 +24,7 @@ function App() {
         {
           path: "/booking",
           element: <Booking />,
-        }
+        },
       ],
     },
   ])

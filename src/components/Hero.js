@@ -20,8 +20,8 @@ function Hero() {
                 <Text color='brand.light' fontSize={{ base: 'xs', md: 'sm'}} >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
                 </Text>
-                <Button bg='brand.yellow' mt={{base:'5', md:'10'}} mb={10}>
-                    <Link to="/booking" className="nav-item">Reserve a Table</Link>
+                <Button mt={{base:'5', md:'10'}} mb={10} variant='brandSecondary'>
+                    <Link to="/booking">Reserve a Table</Link>
                 </Button>
             </Box>
             <Box flex='1'></Box>

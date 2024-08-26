@@ -1,8 +1,9 @@
-import { Flex, Box, VStack, HStack, Text, Heading, Button, Image, Link } from '@chakra-ui/react'
+import { Flex, Box, VStack, HStack, Text, Heading, Button, Image } from '@chakra-ui/react'
 import orderBG from '../assets/orderBG.jpg'
 import { MdOutlineLocalDining } from "react-icons/md";
 import { Divider } from '@chakra-ui/react'
 import lobby from '../assets/lobby.jpg'
+import { Link } from 'react-router-dom'
 
 function AboutPage() {
     return  (
@@ -32,8 +33,8 @@ function AboutPage() {
                             </VStack>
                         </Box>
                         <Box pt={5}>
-                            <Button backgroundColor='transparent' color='brand.light' border='1px'>
-                                <Link to="/booking" className="nav-item">Reserve a Table</Link>
+                            <Button backgroundColor='transparent' color='brand.light' border='1px' variant='brandSecondary'>
+                                <Link to="/booking">Reserve a Table</Link>
                             </Button>
                         </Box>
                     </VStack>
