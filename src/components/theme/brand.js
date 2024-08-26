@@ -26,8 +26,7 @@ const theme = extendTheme({
         sm: '1rem',
         xs: '0.875rem'
     },
-    components: { Modal: modalTheme },
-    components: { Button: buttonTheme },
+    components: { Modal: modalTheme, Button: buttonTheme },
   })
 
 export default theme

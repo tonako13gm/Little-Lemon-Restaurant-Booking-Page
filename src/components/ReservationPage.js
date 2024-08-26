@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-
 import heroBG from '../assets/heroBG.jpg'
 import lobby from '../assets/lobby.jpg'
 import {
@@ -20,15 +19,6 @@ import {
   Button,
   Select
 } from '@chakra-ui/react'
-import {
-  Formik,
-  Form,
-  useField,
-  Field,
-  useFormikContext,
-  useFormik,
-  withFormik
-} from 'formik';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";

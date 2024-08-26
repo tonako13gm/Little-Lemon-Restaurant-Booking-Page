@@ -3,7 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
 import AboutPage from "./components/AboutPage"
 import Home from "./components/Home"
-import Booking from "./components/FormikaAndYup"
+import Booking from "./components/Booking"
+import UnderMaintenace from "./components/UderMaintenace"
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +25,10 @@ function App() {
         {
           path: "/booking",
           element: <Booking />,
+        },
+        {
+          path: "/Under_Maintenace",
+          element: <UnderMaintenace />,
         },
       ],
     },

@@ -1,29 +1,22 @@
 import {
-  Button,
-  ModalFooter,
   ModalCloseButton,
   ModalBody,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   Modal,
   Heading,
   Flex,
   Center,
 } from "@chakra-ui/react";
-
 import { Box, Text } from "@chakra-ui/react";
 import lobby from '../assets/lobbyBG.jpg'
-
-
 import { useAlertContext } from "./contex/alertContex";
-import { useRef } from "react";
 
 /**
  * This is a global component that uses context to display a global alert message.
  */
 function Alert() {
-  const { isOpen, onOpen, onClose } = useAlertContext()
+  const { isOpen, onClose } = useAlertContext()
   return (
     <>
       
